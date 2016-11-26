@@ -1,0 +1,66 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+
+ *= require extra.slider.css
+
+ *= require_self
+ */
+
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+
+img {
+  @extend .img-fluid;
+  margin: 0 auto;
+}
+
+html{
+	font-family: 'Roboto', sans-serif;
+	color: #000;
+}
+
+h1 {
+	font-size: 43px;
+	color: #fff;
+  line-height: 1.5em;
+  letter-spacing: 2px;
+  text-shadow: 0px -1px 6px #000;
+}
+h2 {
+	font-size: 18px;
+	color: #fff;
+  letter-spacing: 1px;
+  line-height: 1em;
+  text-shadow: 0px -1px 3px #000;
+}
+
+.btn {
+  color: #fff;
+
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+
+  &:hover {
+    opacity: 1;
+    color: #000 !important;
+    background-color: whitesmoke;
+    border-radius: 20px;        
+  }
+}
+

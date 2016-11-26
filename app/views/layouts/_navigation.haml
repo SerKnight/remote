@@ -1,0 +1,19 @@
+.navbar.navbar-light.bg-faded
+  %button.navbar-toggler.hidden-lg-up{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
+  #navbarResponsive.collapse.navbar-toggleable-md
+    .nav-left
+      %a.navbar-brand{:href => "/"}= image_tag asset_url('remote-year.png')
+    .nav-right
+      %a{:href => "#"}
+        How it works
+
+      %a{:href => "#"}
+        Itinerary
+
+      %a{:href => "#"}
+        Follow Along
+      
+      %a.btn.btn-primary{:href => "/apply"}
+        Apply Now
+
+  

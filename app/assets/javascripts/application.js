@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tether
+//= require extra.slider.min.js
 //= require bootstrap-sprockets
 //= require_tree .
+

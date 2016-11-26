@@ -1,0 +1,42 @@
+.hero-text
+  .col.col-md-12
+    %h1 
+      TRAVEL THE WORLD 
+      %br
+      WHILE WORKING REMOTELY
+    %h2
+      APPLICATIONS NOW OPEN FOR 2017
+
+  .apply-buttons
+    .col.col-md-6.offset-md-3
+      %a.btn.btn-default{href: '/follow-along'}
+        Follow Along
+      %a.btn.btn-default{href: '/apply'}
+        Apply Now
+
+.extra-slider
+  .wrapper
+    %ul
+      %li{:style => "background-image: url(#{image_path 'bg/ib-wira-dyatmika-kintamani-indonesia.jpg'});"}
+      %li{:style => "background-image: url(#{image_path 'bg/joshua-ness-max-patch-us.jpg'});"}
+      %li{:style => "background-image: url(#{image_path 'bg/kelen-emsley-oahu-us.jpg'});"}
+      %li{:style => "background-image: url(#{image_path 'bg/omar-yassen-waterloo-edinburgh-uk.jpg'});"}
+      %li{:style => "background-image: url(#{image_path 'bg/anubhav-saxena-nyc-us.jpg'});"}
+      %li{:style => "background-image: url(#{image_path 'bg/sandis-helvigs.jpg'});"}
+      
+  / .navigation
+  /   %a.prev{:href => "#"} Previous
+  /   %a.next{:href => "#"} Next
+  / .pagination
+
+
+
+
+
+:javascript
+  $(document).ready(function() {
+    $(".extra-slider").extraSlider({
+      type: 'fade',
+      auto: 2
+    });
+  });
