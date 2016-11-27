@@ -22,6 +22,7 @@ group :development do
 end
 
 gem 'administrate'
+gem 'font-awesome-rails'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'bourbon'
 gem 'devise'

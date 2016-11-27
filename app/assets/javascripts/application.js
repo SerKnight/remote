@@ -18,3 +18,14 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+var ready;
+ready = function() {
+  globalInit();
+};
+
+
+document.addEventListener("turbolinks:load", function() {
+	$(document).ready(ready);
+	$(document).on('page:load', ready);
+})
+
