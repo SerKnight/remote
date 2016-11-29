@@ -9,13 +9,11 @@
       .input-group
         %span#basic-addon1.input-group-addon First Name
         %input.form-control{:placeholder => "Ernest", :type => "text", :name => 'applicant[first_name]'}
-      
 
       %br
       .input-group
         %span#basic-addon1.input-group-addon Last Name
         %input.form-control{:placeholder => "Hemingway", :type => "text", :name => 'applicant[last_name]'}
-
 
       %br
       .input-group
@@ -50,14 +48,14 @@
       %br/
       .input-group
         %span.input-group-addon Zip/ Postal Code
-        %input.form-control{:type => "text", name: 'applicant[zipcode]', placeholder: '83340'}
+        %input.form-control{:type => "text", name: 'applicant[zipcode]', placeholder: '83340', required: true }
 
 
       %br/
       .input-group
         %span.input-group-addon Current Country
         %select.custom-select
-          %option{:selected => "selected", :value => "United States of America", name: 'applicant[country]'} United States
+          %option{:selected => "selected", :value => "United States of America", name: 'applicant[country]', required: true } United States
           - countries_list.each do |country|
             %option{:value => country, name: 'applicant[country]'}= country
 
@@ -117,7 +115,7 @@
       %br
       .input-group
         .input-group-addon $
-        %input#exampleInputAmount.form-control{:type => "text", placeholder: '50000'}
+        %input#exampleInputAmount.form-control{:type => "text", placeholder: '50000', required: true}
         .input-group-addon .00
 
       %label
@@ -155,7 +153,7 @@
           %span.custom-control-indicator
           %span.custom-control-description Other
 
-        
+
         %label
           Facebook
         %br
