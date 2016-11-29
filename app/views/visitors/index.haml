@@ -66,9 +66,16 @@
 
 %hr
 
-.relative.how-it-works-wrapper.apply-btn-wrapper
-  .btn.btn-default#apply-now
-    Apply Now
+.relative.apply-btn-wrapper
+  .extra-slider.bottom-slider
+    .wrapper
+      %ul
+        %li{:style => "background-image: url(#{image_path 'bg/bot-1.jpeg'});"}
+        %li{:style => "background-image: url(#{image_path 'bg/bot-2.jpeg'});"}
+        %li{:style => "background-image: url(#{image_path 'bg/bot-3.jpeg'});"}
+        %li{:style => "background-image: url(#{image_path 'bg/bot-4.jpeg'});"}
+        %li{:style => "background-image: url(#{image_path 'bg/bot-5.jpeg'});"}
+    .apply-wrapper
+      %a.btn.btn-default{href: '/apply'}
+        Apply Now
 
-.homepage-application-wrapper
-  = render partial: 'shared/apply'

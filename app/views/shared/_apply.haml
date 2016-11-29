@@ -1,6 +1,29 @@
 .col-md-6.offset-md-3
   .container
     %form
+      .input-group
+        %span#basic-addon1.input-group-addon @
+        %input.form-control{"aria-describedby" => "basic-addon1", :placeholder => "Username", :type => "text"}/
+      %br/
+      .input-group
+        %input.form-control{"aria-describedby" => "basic-addon2", :placeholder => "Recipient's username", :type => "text"}/
+        %span#basic-addon2.input-group-addon @example.com
+      %br/
+      %label{:for => "basic-url"} Your vanity URL
+      .input-group
+        %span#basic-addon3.input-group-addon https://example.com/users/
+        %input#basic-url.form-control{"aria-describedby" => "basic-addon3", :type => "text"}/
+      %br/
+      .input-group
+        %span.input-group-addon $
+        %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text"}/
+        %span.input-group-addon .00
+      %br/
+      .input-group
+        %span.input-group-addon $
+        %span.input-group-addon 0.00
+        %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text"}/
+        
       .form-group.row
         %label.col-sm-2.col-form-label{:for => "inputEmail3"} Email
         .col-sm-10
