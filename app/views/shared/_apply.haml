@@ -1,68 +1,198 @@
-.col-md-6.offset-md-3
+%link{:href => "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", :rel => "stylesheet"}/
+%script{:src => "https://code.jquery.com/jquery-1.12.4.js"}
+%script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
+
+
+.col-md-6.offset-md-3#remote-application-form
   .container
     %form
       .input-group
-        %span#basic-addon1.input-group-addon @
-        %input.form-control{"aria-describedby" => "basic-addon1", :placeholder => "Username", :type => "text"}/
-      %br/
-      .input-group
-        %input.form-control{"aria-describedby" => "basic-addon2", :placeholder => "Recipient's username", :type => "text"}/
-        %span#basic-addon2.input-group-addon @example.com
-      %br/
-      %label{:for => "basic-url"} Your vanity URL
-      .input-group
-        %span#basic-addon3.input-group-addon https://example.com/users/
-        %input#basic-url.form-control{"aria-describedby" => "basic-addon3", :type => "text"}/
-      %br/
-      .input-group
-        %span.input-group-addon $
-        %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text"}/
-        %span.input-group-addon .00
-      %br/
-      .input-group
-        %span.input-group-addon $
-        %span.input-group-addon 0.00
-        %input.form-control{"aria-label" => "Amount (to the nearest dollar)", :type => "text"}/
-        
-      .form-group.row
-        %label.col-sm-2.col-form-label{:for => "inputEmail3"} Email
-        .col-sm-10
-          %input#inputEmail3.form-control{:placeholder => "Email", :type => "email"}/
-      .form-group.row
-        %label.col-sm-2.col-form-label{:for => "inputPassword3"} Password
-        .col-sm-10
-          %input#inputPassword3.form-control{:placeholder => "Password", :type => "password"}/
-      %fieldset.form-group.row
-        %legend.col-form-legend.col-sm-2 Radios
-        .col-sm-10
-          .form-check
-            %label.form-check-label
-              %input#gridRadios1.form-check-input{:checked => "checked", :name => "gridRadios", :type => "radio", :value => "option1"}/
-              Option one is this and that—be sure to include why it's great
-          .form-check
-            %label.form-check-label
-              %input#gridRadios2.form-check-input{:name => "gridRadios", :type => "radio", :value => "option2"}/
-              Option two can be something else and selecting it will deselect option one
-          .form-check.disabled
-            %label.form-check-label
-              %input#gridRadios3.form-check-input{:disabled => "disabled", :name => "gridRadios", :type => "radio", :value => "option3"}/
-              Option three is disabled
-      .form-group.row
-        %label.col-sm-2 Checkbox
-        .col-sm-10
-          .form-check
-            %label.form-check-label
-              %input.form-check-input{:type => "checkbox"}/
-              Check me out
-      .form-group.row
-        .offset-sm-2.col-sm-10
-          %button.btn.btn-primary{:type => "submit"} Sign in
+        %span#basic-addon1.input-group-addon First Name
+        %input.form-control{:placeholder => "Ernest", :type => "text", :name => 'applicant[first_name]'}
+      
 
-  %label.custom-control.custom-radio
-    %input#radio1.custom-control-input{:name => "radio", :type => "radio"}/
-    %span.custom-control-indicator
-    %span.custom-control-description Toggle this custom radio
-  %label.custom-control.custom-radio
-    %input#radio2.custom-control-input{:name => "radio", :type => "radio"}/
-    %span.custom-control-indicator
-    %span.custom-control-description Or toggle this other custom radio
+      %br
+      .input-group
+        %span#basic-addon1.input-group-addon Last Name
+        %input.form-control{:placeholder => "Hemingway", :type => "text", :name => 'applicant[last_name]'}
+
+
+      %br
+      .input-group
+        %span#basic-addon1.input-group-addon Date Of Birth
+        %input.form-control#datepicker{:placeholder => "July 21, 1899", :type => "text", :name => 'applicant[dob]'}
+        :javascript
+          $( function() {
+            $( "#datepicker" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                maxDate: "1d",
+                dateFormat: "MM d, yy",
+                yearRange: '1975:2016',
+            });
+          } );
+
+
+      %br
+      .input-group
+        %span#basic-addon3.input-group-addon Email Address
+        %input#basic-url.form-control{:type => "text", :name => 'applicant[email]', placeholder: 'above-all@endure.com', required: true}
+      
+
+      %br
+      .input-group
+        %span.input-group-addon Gender
+        %select.custom-select
+          %option{:value => "female", name: 'applicant[gender]'} Female
+          %option{:selected => "selected", :value => "male", name: 'applicant[gender]'} Male
+
+
+      %br/
+      .input-group
+        %span.input-group-addon Zip/ Postal Code
+        %input.form-control{:type => "text", name: 'applicant[zipcode]', placeholder: '83340'}
+
+
+      %br/
+      .input-group
+        %span.input-group-addon Current Country
+        %select.custom-select
+          %option{:selected => "selected", :value => "United States of America", name: 'applicant[country]'} United States
+          - countries_list.each do |country|
+            %option{:value => country, name: 'applicant[country]'}= country
+
+      %br/
+      .input-group
+        %span.input-group-addon Country of Citizenship
+        %select.custom-select
+          %option{:selected => "selected", :value => "United States of America", name: 'applicant[citizenship]'} United States
+          - countries_list.each do |country|
+            %option{:value => country, name: 'applicant[country]'}= country
+
+      %br
+      .input-group
+        %span.input-group-addon Native Language
+        %select.custom-select
+          %option{:selected => "selected", :value => "English", name: 'applicant[native_language]'} English
+          - language_list.each do |language|
+            %option{:value => language, name: 'applicant[native_language]'}= language
+
+      %br
+      .input-group
+        %span.input-group-addon English Fluency
+        %select.custom-select
+          %option{:selected => "selected", :value => "English", name: 'applicant[english_fluency]'} Fluent
+          - language_fluency_list.each do |language|
+            %option{:value => language, name: 'applicant[english_fluency]'}= language
+          
+
+      %br
+      .input-group
+        %span.input-group-addon Current Field of Employment
+        %select.custom-select
+          %option{:selected => "selected"} Select One
+          - employment_field_list.each do |job|
+            %option{:value => job, name: 'applicant[current_job]'}= job
+
+      %label
+        Do you currently work remotely?
+        %i
+          * You are not required to currently have a remote job.
+      %br
+      .input-group
+        %span.input-group-addon Select One
+        %select.custom-select
+          %option{:value => 'Always', name: 'applicant[remote_work]'} Always
+          %option{:value => 'Sometimes', name: 'applicant[remote_work]'} Sometimes
+          %option{:value => 'Never', name: 'applicant[remote_work]'} Never
+        
+
+
+      %label
+        Annual Income
+        %i
+          * Please enter your current annual income (base + bonus, $USD). 
+          %br
+          Example: for $50,000 enter 50000.
+      %br
+      .input-group
+        .input-group-addon $
+        %input#exampleInputAmount.form-control{:type => "text", placeholder: '50000'}
+        .input-group-addon .00
+
+      %label
+        Remote Year
+        %i
+          * How did you hear about Remote Year?
+      .input-group
+        %label.custom-control.custom-radio
+          %input#radio1.custom-control-input{:type => "radio", :name => 'applicant[referral]', :value => 'Facebook'}
+          %span.custom-control-indicator
+          %span.custom-control-description Facebook
+
+        %label.custom-control.custom-radio
+          %input#radio1.custom-control-input{:type => "radio", :name => 'applicant[referral]', :value => 'Instagram'}
+          %span.custom-control-indicator
+          %span.custom-control-description Instagram
+
+        %label.custom-control.custom-radio
+          %input#radio1.custom-control-input{:type => "radio", :name => 'applicant[referral]', :value => 'Media Article'}
+          %span.custom-control-indicator
+          %span.custom-control-description Media Article
+
+        %label.custom-control.custom-radio
+          %input#radio1.custom-control-input{:type => "radio", :name => 'applicant[referral]', :value => 'Friend in Remote Year'}
+          %span.custom-control-indicator
+          %span.custom-control-description Friend in Remote Year
+
+        %label.custom-control.custom-radio
+          %input#radio1.custom-control-input{:type => "radio", :name => 'applicant[referral]', :value => 'shared with me'}
+          %span.custom-control-indicator
+          %span.custom-control-description Friend shared with me
+
+        %label.custom-control.custom-radio
+          %input#radio1.custom-control-input{:type => "radio", :name => 'applicant[referral]', :value => 'other'}
+          %span.custom-control-indicator
+          %span.custom-control-description Other
+
+        
+        %label
+          Facebook
+        %br
+        .input-group
+          .input-group-addon https://www.facebook.com/
+          %input#exampleInputAmount.form-control{:type => "text", placeholder: 'remoteyear', name: 'applicant[facebook]'}
+
+        %label
+          LinkedIn
+        %br
+        .input-group
+          .input-group-addon https://linkedin.com/in/
+          %input#exampleInputAmount.form-control{:type => "text", placeholder: 'company/remote-year', name: 'applicant[linkedin]'}
+
+        %label
+          Instagram
+        %br
+        .input-group
+          .input-group-addon https://instagram.com/
+          %input#exampleInputAmount.form-control{:type => "text", placeholder: 'remoteyear', name: 'applicant[instagram]'}
+
+        %label
+          Twitter
+        %br
+        .input-group
+          .input-group-addon https://twitter.com/
+          %input#exampleInputAmount.form-control{:type => "text", placeholder: 'remoteyear', name: 'applicant[twitter]'}
+
+        %label
+          Website
+        %br
+        .input-group
+          %input#exampleInputAmount.form-control{:type => "text", placeholder: 'http://www.remoteyear.com/blog', name: 'applicant[website]'}
+
+
+
+      .submit-wrapper
+        %button.btn.btn-primary{type: 'submit'}
+          Submit Application
+%hr
