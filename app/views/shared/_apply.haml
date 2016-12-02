@@ -4,7 +4,7 @@
 %script{src: "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 
 
-.col-md-8.offset-md-3#remote-application-form
+.col-md-6.offset-md-3#remote-application-form
   .container
     %form{"accept-charset" => "UTF-8", action: "/submit-application", method: "POST", roll: "form", id: 'applicant_form'}
       = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
@@ -27,7 +27,6 @@
       .input-group
         %span#basic-addon3.input-group-addon Email Address
         %input#basic-url.form-control{type: "text", name: 'applicant[email]', placeholder: 'above-all@endure.com', required: true}
-      
 
       %br
       .input-group
@@ -37,13 +36,13 @@
           %option{selected: "selected", value: "male"} Male
 
 
-      %br/
+      %br
       .input-group
         %span.input-group-addon Zip/ Postal Code
         %input.form-control{type: "text", name: 'applicant[zipcode]', placeholder: '83340', required: true }
 
 
-      %br/
+      %br
       .input-group
         %span.input-group-addon Current Country
         %select.custom-select{name: 'applicant[country]'}
@@ -51,7 +50,7 @@
           - ApplicationHelper::COUNTRIES.each do |country|
             %option{value: country}= country
 
-      %br/
+      %br
       .input-group
         %span.input-group-addon Country of Citizenship
         %select.custom-select{name: 'applicant[citizenship]'}
@@ -121,45 +120,46 @@
         Remote Year
         %i
           * How did you hear about Remote Year?
-      %select
-        .input-group
-          %label.custom-control.custom-radio
-            %input#radio1.custom-control-input{type: "radio", value: 'Facebook'}
-            %span.custom-control-indicator
-            %span.custom-control-description Facebook
-
-          %label.custom-control.custom-radio
-            %input#radio1.custom-control-input{type: "radio", value: 'Instagram'}
-            %span.custom-control-indicator
-            %span.custom-control-description Instagram
-
-          %label.custom-control.custom-radio
-            %input#radio1.custom-control-input{type: "radio", value: 'Media Article'}
-            %span.custom-control-indicator
-            %span.custom-control-description Media Article
-
-          %label.custom-control.custom-radio
-            %input#radio1.custom-control-input{type: "radio", value: 'Friend in Remote Year'}
-            %span.custom-control-indicator
-            %span.custom-control-description Friend in Remote Year
-
-          %label.custom-control.custom-radio
-            %input#radio1.custom-control-input{type: "radio", value: 'shared with me'}
-            %span.custom-control-indicator
-            %span.custom-control-description Friend shared with me
-
-          %label.custom-control.custom-radio
-            %input#radio1.custom-control-input{type: "radio", value: 'other'}
-            %span.custom-control-indicator
-            %span.custom-control-description Other
-
-
-          %label
-            Facebook
-          %br
+     
+      .relative
+        %select
           .input-group
-            .input-group-addon https://www.facebook.com/
-            %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[facebook]'}
+            %label.custom-control.custom-radio
+              %input#radio1.custom-control-input{type: "radio", value: 'Facebook'}
+              %span.custom-control-indicator
+              %span.custom-control-description Facebook
+
+            %label.custom-control.custom-radio
+              %input#radio1.custom-control-input{type: "radio", value: 'Instagram'}
+              %span.custom-control-indicator
+              %span.custom-control-description Instagram
+
+            %label.custom-control.custom-radio
+              %input#radio1.custom-control-input{type: "radio", value: 'Media Article'}
+              %span.custom-control-indicator
+              %span.custom-control-description Media Article
+
+            %label.custom-control.custom-radio
+              %input#radio1.custom-control-input{type: "radio", value: 'Friend in Remote Year'}
+              %span.custom-control-indicator
+              %span.custom-control-description Friend in Remote Year
+
+            %label.custom-control.custom-radio
+              %input#radio1.custom-control-input{type: "radio", value: 'shared with me'}
+              %span.custom-control-indicator
+              %span.custom-control-description Friend shared with me
+
+            %label.custom-control.custom-radio
+              %input#radio1.custom-control-input{type: "radio", value: 'other'}
+              %span.custom-control-indicator
+              %span.custom-control-description Other
+
+            %label
+              Facebook
+            %br
+            .input-group
+              .input-group-addon https://www.facebook.com/
+              %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[facebook]'}
 
           %label
             LinkedIn
