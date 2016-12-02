@@ -122,8 +122,8 @@
           * How did you hear about Remote Year?
      
       .relative
-        %select
-          .input-group
+        .input-group
+          %fieldset{name: 'applicant[referral]'}
             %label.custom-control.custom-radio
               %input#radio1.custom-control-input{type: "radio", value: 'Facebook'}
               %span.custom-control-indicator
@@ -154,12 +154,12 @@
               %span.custom-control-indicator
               %span.custom-control-description Other
 
-            %label
-              Facebook
-            %br
-            .input-group
-              .input-group-addon https://www.facebook.com/
-              %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[facebook]'}
+          %label
+            Facebook
+          %br
+          .input-group
+            .input-group-addon https://www.facebook.com/
+            %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[facebook]'}
 
           %label
             LinkedIn

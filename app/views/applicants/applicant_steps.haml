@@ -1,0 +1,41 @@
+.applicant-steps
+  .col.col-md-8.offset-md-2
+    %hr
+    %progress.progress.progress-striped.progress-animated{:max => "100", :value => "1"}
+    %hr
+
+    .row.tasks
+      .col-md-6
+        - @applicant.attributes.each do |atr|
+          %p
+            %strong
+              = "#{atr[0]}: "
+            %span 
+              = atr[1]
+      .col-md-6
+        %p
+          Welcome to the application process.. Track your progress, and review the checklist to get ready for remote year.
+    
+
+:javascript
+  setInterval(increment, 100);
+  function increment(){
+    var amount = $('.progress').val();
+    $('.progress').val( (amount + (1 * 1.1))  )
+  }
+  
+
+
+:css
+  .progress{
+    width:100%;
+
+  }
+
+  .red{
+    background-color:red; 
+  }
+
+  .white{
+    background-color:white;
+  }

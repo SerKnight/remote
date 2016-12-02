@@ -1,4 +1,4 @@
-class ApplicantController < ApplicationController
+class ApplicantsController < ApplicationController
 
   def create_applicant
     @applicant = Applicant.create!(secure_params)
