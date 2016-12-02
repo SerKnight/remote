@@ -4,9 +4,9 @@
 %script{src: "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 
 
-.col-md-6.offset-md-3#remote-application-form
+.col-md-8.offset-md-3#remote-application-form
   .container
-    = form_for(@applicant, url: '/submit-application', method: 'post') do |f|
+    %form{"accept-charset" => "UTF-8", action: "/submit-application", method: "POST", roll: "form", id: 'applicant_form'}
       = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
       .input-group
         %span#basic-addon1.input-group-addon First Name
@@ -48,7 +48,7 @@
         %span.input-group-addon Current Country
         %select.custom-select{name: 'applicant[country]'}
           %option{selected: "selected", value: "United States of America", required: true } United States
-          - countries_list.each do |country|
+          - ApplicationHelper::COUNTRIES.each do |country|
             %option{value: country}= country
 
       %br/
@@ -56,7 +56,7 @@
         %span.input-group-addon Country of Citizenship
         %select.custom-select{name: 'applicant[citizenship]'}
           %option{selected: "selected", value: "United States of America"} United States
-          - countries_list.each do |country|
+          - ApplicationHelper::COUNTRIES.each do |country|
             %option{value: country}= country
 
       %br
@@ -64,7 +64,7 @@
         %span.input-group-addon Native Language
         %select.custom-select{name: 'applicant[native_language]'}
           %option{selected: "selected"} Select One
-          - language_list.each do |language|
+          - ApplicationHelper::LANGUAGES.each do |language|
             %option{value: language}= language
 
       %br
@@ -72,16 +72,23 @@
         %span.input-group-addon English Fluency
         %select.custom-select{name: 'applicant[english_fluency]'}
           %option{selected: "selected"} Select One
-          - language_fluency_list.each do |language|
+          - ApplicationHelper::LANGUAGE_FLUENCY.each do |language|
             %option{value: language}= language
           
+      %br
+      .input-group
+        %span.input-group-addon Extended Travel 
+        %select.custom-select{name: 'applicant[extended_travel]'}
+          %option{selected: "selected"} Select One
+          - ApplicationHelper::TRAVEL_LENGTHS.each do |travel|
+            %option{value: travel}= travel
 
       %br
       .input-group
         %span.input-group-addon Current Field of Employment
         %select.custom-select{name: 'applicant[current_job]'}
           %option{selected: "selected"} Select One
-          - employment_field_list.each do |job|
+          - ApplicationHelper::EMPLOYMENT_FIELDS.each do |job|
             %option{value: job}= job
 
       %label
@@ -147,39 +154,39 @@
             %span.custom-control-description Other
 
 
-        %label
-          Facebook
-        %br
-        .input-group
-          .input-group-addon https://www.facebook.com/
-          %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[facebook]'}
+          %label
+            Facebook
+          %br
+          .input-group
+            .input-group-addon https://www.facebook.com/
+            %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[facebook]'}
 
-        %label
-          LinkedIn
-        %br
-        .input-group
-          .input-group-addon https://linkedin.com/in/
-          %input#exampleInputAmount.form-control{type: "text", placeholder: 'company/remote-year', name: 'applicant[linkedin]'}
+          %label
+            LinkedIn
+          %br
+          .input-group
+            .input-group-addon https://linkedin.com/in/
+            %input#exampleInputAmount.form-control{type: "text", placeholder: 'company/remote-year', name: 'applicant[linkedin]'}
 
-        %label
-          Instagram
-        %br
-        .input-group
-          .input-group-addon https://instagram.com/
-          %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[instagram]'}
+          %label
+            Instagram
+          %br
+          .input-group
+            .input-group-addon https://instagram.com/
+            %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[instagram]'}
 
-        %label
-          Twitter
-        %br
-        .input-group
-          .input-group-addon https://twitter.com/
-          %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[twitter]'}
+          %label
+            Twitter
+          %br
+          .input-group
+            .input-group-addon https://twitter.com/
+            %input#exampleInputAmount.form-control{type: "text", placeholder: 'remoteyear', name: 'applicant[twitter]'}
 
-        %label
-          Website
-        %br
-        .input-group
-          %input#exampleInputAmount.form-control{type: "text", placeholder: 'http://www.remoteyear.com/blog', name: 'applicant[website]'}
+          %label
+            Website
+          %br
+          .input-group
+            %input#exampleInputAmount.form-control{type: "text", placeholder: 'http://www.remoteyear.com/blog', name: 'applicant[website]'}
 
 
 
