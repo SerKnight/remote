@@ -1,6 +1,5 @@
 function globalInit(){
-	scrollArrow();
-	datePickerInit();
+	datePickerInit()	
 }
 
 
@@ -19,7 +18,13 @@ function scrollArrow(){
 
 
 function datePickerInit() {
-  // $( "#datepicker").datepicker({
-  //   dateFormat: 'DD, M d'
-  // })
+	if($( "#datepicker" ).length != 0){
+	  $( "#datepicker" ).datepicker({
+	    changeMonth: true,
+	    changeYear: true,
+	    maxDate: "1d",
+	    dateFormat: "MM d, yy",
+	    yearRange: '1975:2016',
+	  });
+	}
 }

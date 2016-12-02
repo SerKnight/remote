@@ -5,7 +5,7 @@ class VisitorsController < ApplicationController
 	end
 
 	def apply
-
+		@applicant = Applicant.new
 	end
 	
 end

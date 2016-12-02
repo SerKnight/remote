@@ -28,8 +28,7 @@ gem 'bourbon'
 gem 'devise'
 gem 'haml-rails'
 gem 'pg'
-gem 'unicorn'
-gem 'unicorn-rails'
+  
 
 group :development do
   gem 'better_errors'
