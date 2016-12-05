@@ -1,6 +1,25 @@
-%header.header
-  %h1#page-title.header__heading Applicant Pipeline
-  .header__actions
-    = link_to("Back", '/admin/applicants', class: "button btn-danger")
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"}
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/utils/Draggable.min.js"}
 
-= @applicants.inspect
+.pipeline-container
+  %header.header
+    %h1#page-title.header__heading Applicant Pipeline
+    .header__actions
+      = link_to("Back", '/admin/applicants', class: "button btn-danger")
+
+
+
+  .row
+    - ApplicationHelper::APPLICANT_STAGES.each do |stage|
+      %section.container{style: 'width: 25%; float: left; position: relative;'}
+        %span{style: 'font-size: 30px; margin-left: 5%;'}= stage
+        %hr
+        - @applicants[stage].each do |applicant|
+          .list-item{style: "position: relative;float: left;width: 90%;padding: 20px;border: 1px solid #000;border-radius: 10px;margin-left: 5%;margin-right: 5%;margin-bottom: 5%;"}
+            .item-content
+              %span.order
+              %strong= "#{applicant.first_name} #{applicant.last_name}"
+              %br
+              %i= applicant.country
+              %br
+              = applicant.current_job

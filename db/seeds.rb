@@ -23,7 +23,7 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 	puts "Creating.... #{fname} #{lname} from #{cit}"
 	Applicant.create(
-		stage: 'new',
+		stage: ApplicationHelper::APPLICANT_STAGES.sample,
 		first_name: fname,
 		last_name: lname,
 		dob: Faker::Date.between(50.year.ago, 18.year.ago),
