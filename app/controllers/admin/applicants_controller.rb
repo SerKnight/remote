@@ -15,5 +15,10 @@ module Admin
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
+
+
+    # def dashboard
+    #   @applicants = Applicant.all
+    # end
   end
 end

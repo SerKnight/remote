@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :applicants
   
+  scope :admin do
+    get '/applicant-dashboard' => 'admin/applicants#dashboard'
+  end  
 
   get '/apply' => 'visitors#apply'
   post '/submit-application' => 'applicants#create_applicant'
