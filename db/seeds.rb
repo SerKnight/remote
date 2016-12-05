@@ -8,10 +8,10 @@
 # user = CreateAdminService.new.call
 
 user = User.find_or_create_by!(email: 'admin@remoteyear.com') do |user|
-    user.password = 'passowrd'
-    user.password_confirmation = 'passowrd'
-    user.admin!
-  end
+	user.password = 'password'
+	user.password_confirmation = 'password'
+	user.admin!
+end
 
 puts 'CREATED ADMIN USER: ' << user.email
 

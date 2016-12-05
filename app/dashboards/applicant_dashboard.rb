@@ -22,7 +22,7 @@ class ApplicantDashboard < Administrate::BaseDashboard
     english_fluency: Field::String,
     current_job: Field::String,
     remote_work: Field::String,
-    income: Field::String,
+    income: Field::Number,
     referral: Field::String,
     facebook: Field::String,
     linkedin: Field::String,

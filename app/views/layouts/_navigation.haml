@@ -2,9 +2,17 @@
   %button.navbar-toggler.hidden-lg-up{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
   #navbarResponsive.collapse.navbar-toggleable-md
     .nav-left
+    
     %a.navbar-brand{:href => "/"}= image_tag asset_url('remote-year.png')
 
     .nav-right
+      - if current_user
+        = link_to "Sign Out", "/users/sign_out", :method => 'delete'
+        %a{href: '/admin'} Admin
+      - else
+        %a.btn.btn-default{:href => "/users/sign_in"}
+          Access Portal
+
       %a{:href => "http://www.remoteyear.com/how-it-works/"}
         How it works
 

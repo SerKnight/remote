@@ -39,6 +39,14 @@ h1 {
   letter-spacing: 2px;
   text-shadow: 0px -1px 6px #000;
 }
+
+.h1-black {
+  font-size: 43px;
+  color: #000;
+  line-height: 1.5em;
+  letter-spacing: 2px;
+}
+
 h2 {
 	font-size: 18px;
 	color: #fff;
@@ -79,6 +87,7 @@ hr {
   text-align: center;
   font-size: 22px;
   padding: 20px;
+  margin-bottom: 0px;
 
   .close {
     cursor: pointer;
@@ -86,8 +95,7 @@ hr {
     border: 0;
     -webkit-appearance: none;
     font-size: 2em;
-    margin-top: -20px;
-    padding: 15px;
+    margin-top: -10px;
   }
 }
 

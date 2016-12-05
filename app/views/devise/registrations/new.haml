@@ -1,17 +1,25 @@
-.authform
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
-    %h3 Sign up
-    = devise_error_messages!
-    .form-group
-      = f.label :name
-      = f.text_field :name, :autofocus => true, class: 'form-control'
-    .form-group
-      = f.label :email
-      = f.email_field :email, class: 'form-control'
-    .form-group
-      = f.label :password
-      = f.password_field :password, class: 'form-control'
-    .form-group
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, class: 'form-control'
-    = f.submit 'Sign up', :class => 'button right'
+.container
+  .row.main
+    .panel-heading
+      .panel-title.text-center
+        .h1-black New Password
+        %hr/
+
+    .col-md-6.offset-md-3
+      .authform
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
+          %h3= "Sign Up or #{link_to 'Sign In', '/users/sign_in', class: 'right'}".html_safe
+          = devise_error_messages!
+          .form-group
+            = f.label :name
+            = f.text_field :name, :autofocus => true, class: 'form-control'
+          .form-group
+            = f.label :email
+            = f.email_field :email, class: 'form-control'
+          .form-group
+            = f.label :password
+            = f.password_field :password, class: 'form-control'
+          .form-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'form-control'
+          = f.submit 'Sign up', :class => 'button right'

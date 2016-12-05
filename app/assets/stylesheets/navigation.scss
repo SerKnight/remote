@@ -47,7 +47,7 @@
 			}
 		}
 
-		.btn {
+		.btn-primary {
 			color: #fff;
 			background-color: #0275d8;
 
@@ -55,6 +55,16 @@
 				opacity: 1;
 				color: #fff !important;
 				background-color: #0275d8;
+			}
+		}
+		.btn-defauly {
+			color: #000;
+			background-color: whitesmoke;
+
+			&:hover {
+				opacity: 1;
+				color: #000 !important;
+				background-color: whitesmoke;
 			}
 		}
 	}
