@@ -17,8 +17,8 @@ module Admin
     # for more information
 
 
-    # def dashboard
-    #   @applicants = Applicant.all
-    # end
+    def pipeline
+      @applicants = Applicant.all
+    end
   end
 end

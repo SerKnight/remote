@@ -25,6 +25,6 @@ class ApplicantsController < ApplicationController
   private
 
   def secure_params
-    params.require(:applicant).permit(:first_name,:last_name,:dob, :email,:gender,:zipcode,:country,:citizenship,:travel_length,:income,:native_language,:english_fluency,:current_job,:remote_work,:referral,:facebook,:linkedin,:instagram,:twitter,:website)
+    params.require(:applicant).permit(:stage,:first_name,:last_name,:dob, :email,:gender,:zipcode,:country,:citizenship,:travel_length,:income,:native_language,:english_fluency,:current_job,:remote_work,:referral,:facebook,:linkedin,:instagram,:twitter,:website)
   end
 end

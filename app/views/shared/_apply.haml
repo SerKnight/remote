@@ -7,6 +7,8 @@
   .container
     %form{"accept-charset" => "UTF-8", action: "/submit-application", method: "POST", roll: "form", id: 'applicant_form'}
       = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      = tag(:input, :type => "hidden", :name => 'applicant[stage]', :value => 'new')
+
       - p = session[:applicant_params]
       .input-group
         %span#basic-addon1.input-group-addon First Name

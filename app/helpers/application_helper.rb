@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+	APPLICANT_STAGES=["new","screened","qualified","confirmed"]
 	LANGUAGES=["English","Spanish","Portugeuse","French","Italian","German","Chinese","Arabic","Other"]
 	LANGUAGE_FLUENCY=["Fluent","Conversational","Can speak but don't understand","Don't understand English","Conversational after a few drinks"]
 	TRAVEL_LENGTHS=["1 week","1-2 weeks","1-2 months","3-6 months","+6 months"]

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :applicants
   
   scope :admin do
-    get '/applicant-dashboard' => 'admin/applicants#dashboard'
+    get '/applicant-dashboard' => 'admin/applicants#pipeline'
   end  
 
   get '/apply' => 'visitors#apply'

@@ -19,6 +19,7 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_at: Field::DateTime,
     current_sign_in_ip: Field::String.with_options(searchable: false),
     last_sign_in_ip: Field::String.with_options(searchable: false),
+    stage: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     name: Field::String,
@@ -35,6 +36,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :name,
     :role,
+    stage:
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -45,6 +47,7 @@ class UserDashboard < Administrate::BaseDashboard
     :created_at,
     :name,
     :role,
+    stage:
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -54,6 +57,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :name,
     :role,
+    stage:
   ].freeze
 
   # Overwrite this method to customize how users are displayed
