@@ -152,15 +152,18 @@
 
 
 @media only screen and (max-width: 600px) {
-	.hero-text h1 {
-		font-size: 30px;
-		line-height: 1.75em;
-	}
-	.extra-slider, .extra-slider .wrapper {
-    height: 500px !important;
-  }
+	.hero-container {
+		
+		.hero-text h1 {
+			font-size: 30px;
+			line-height: 1.75em;
+		}
+		.extra-slider, .extra-slider .wrapper {
+	    height: 500px !important;
+	  }
 
-  .nav-right .btn-primary {
-  	margin: 0;
-  }
+	  .nav-right .btn-primary {
+	  	margin: 0;
+	  }
+	}
 }
