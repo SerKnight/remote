@@ -36,7 +36,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :name,
     :role,
-    stage:
+    :stage
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -47,7 +47,7 @@ class UserDashboard < Administrate::BaseDashboard
     :created_at,
     :name,
     :role,
-    stage:
+    :stage
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -57,7 +57,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :name,
     :role,
-    stage:
+    :stage
   ].freeze
 
   # Overwrite this method to customize how users are displayed
