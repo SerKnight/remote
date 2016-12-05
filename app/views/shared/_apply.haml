@@ -1,4 +1,3 @@
-
 %link{href: "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css", rel: "stylesheet"}/
 %script{src: "https://code.jquery.com/jquery-1.12.4.js"}
 %script{src: "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
@@ -8,25 +7,26 @@
   .container
     %form{"accept-charset" => "UTF-8", action: "/submit-application", method: "POST", roll: "form", id: 'applicant_form'}
       = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+      - p = session[:applicant_params]
       .input-group
         %span#basic-addon1.input-group-addon First Name
-        %input.form-control{placeholder: "Ernest", type: "text", name: 'applicant[first_name]'}
+        %input.form-control{placeholder: "Ernest", type: "text", name: 'applicant[first_name]', required: true, value: p ? p['first_name'] : ''}
 
       %br
       .input-group
         %span#basic-addon1.input-group-addon Last Name
-        %input.form-control{placeholder: "Hemingway", type: "text", name: 'applicant[last_name]'}
+        %input.form-control{placeholder: "Hemingway", type: "text", name: 'applicant[last_name]', required: true, value: p ? p['last_name'] : ''}
 
       %br
       .input-group
         %span#basic-addon1.input-group-addon Date Of Birth
-        %input.form-control#datepicker{placeholder: "July 21, 1899", type: "text", name: 'applicant[dob]'}
+        %input.form-control#datepicker{placeholder: "July 21, 1899", type: "text", name: 'applicant[dob]', required: true, value: p ? p['dob'] : ''}
 
 
       %br
       .input-group
         %span#basic-addon3.input-group-addon Email Address
-        %input#basic-url.form-control{type: "text", name: 'applicant[email]', placeholder: 'above-all@endure.com', required: true}
+        %input#basic-url.form-control{type: "text", name: 'applicant[email]', placeholder: 'above-all@endure.com', required: true, value: p ? p['email'] : ''}
 
       %br
       .input-group
@@ -39,54 +39,54 @@
       %br
       .input-group
         %span.input-group-addon Zip/ Postal Code
-        %input.form-control{type: "text", name: 'applicant[zipcode]', placeholder: '83340', required: true }
+        %input.form-control{type: "text", name: 'applicant[zipcode]', placeholder: '83340', required: true, value: p ? p['zipcode'] : ''}
 
 
       %br
       .input-group
         %span.input-group-addon Current Country
-        %select.custom-select{name: 'applicant[country]'}
-          %option{selected: "selected", value: "United States of America", required: true } United States
+        %select.custom-select{name: 'applicant[country]', required: true}
+          %option{selected: "selected", value: "United States of America", value: p ? p['country'] : 'United States'}= p ? p['country'] : 'United States Of America'
           - ApplicationHelper::COUNTRIES.each do |country|
             %option{value: country}= country
 
       %br
       .input-group
         %span.input-group-addon Country of Citizenship
-        %select.custom-select{name: 'applicant[citizenship]'}
-          %option{selected: "selected", value: "United States of America"} United States
-          - ApplicationHelper::COUNTRIES.each do |country|
-            %option{value: country}= country
+        %select.custom-select{name: 'applicant[citizenship]', required: true}
+          %option{selected: "selected", value: "United States of America",  value: p ? p['citizenship'] : 'United States'}= p ? p['citizenship'] : 'United States Of America'
+          - ApplicationHelper::COUNTRIES.each do |citizenship|
+            %option{value: citizenship}= citizenship
 
       %br
       .input-group
         %span.input-group-addon Native Language
-        %select.custom-select{name: 'applicant[native_language]'}
-          %option{selected: "selected"} Select One
+        %select.custom-select{name: 'applicant[native_language]', required: true}
+          %option{selected: "selected", value: p ? p['native_language'] : ''}= p ? p['native_language'] : ''
           - ApplicationHelper::LANGUAGES.each do |language|
             %option{value: language}= language
 
       %br
       .input-group
         %span.input-group-addon English Fluency
-        %select.custom-select{name: 'applicant[english_fluency]'}
-          %option{selected: "selected"} Select One
+        %select.custom-select{name: 'applicant[english_fluency]', required: true}
+          %option{selected: "selected", value: p ? p['english_fluency'] : ''}= p ? p['english_fluency'] : ''
           - ApplicationHelper::LANGUAGE_FLUENCY.each do |language|
             %option{value: language}= language
           
       %br
       .input-group
         %span.input-group-addon Extended Travel 
-        %select.custom-select{name: 'applicant[extended_travel]'}
-          %option{selected: "selected"} Select One
+        %select.custom-select{name: 'applicant[travel_length]', required: true}
+          %option{selected: "selected", value: p ? p['travel_length'] : ''}= p ? p['travel_length'] : ''
           - ApplicationHelper::TRAVEL_LENGTHS.each do |travel|
             %option{value: travel}= travel
 
       %br
       .input-group
         %span.input-group-addon Current Field of Employment
-        %select.custom-select{name: 'applicant[current_job]'}
-          %option{selected: "selected"} Select One
+        %select.custom-select{name: 'applicant[current_job]', required: true}
+          %option{selected: "selected", value: p ? p['current_job'] : ''}= p ? p['travel_length'] : ''
           - ApplicationHelper::EMPLOYMENT_FIELDS.each do |job|
             %option{value: job}= job
 
@@ -96,8 +96,9 @@
           * You are not required to currently have a remote job.
       %br
       .input-group
-        %span.input-group-addon Select One
-        %select.custom-select{name: 'applicant[remote_work]'}
+        %span.input-group-addon Remote Work
+        %select.custom-select{name: 'applicant[remote_work]', required: true}
+          %option{value: '', value: p ? p['remote_work'] : ''}= p ? p['travel_length'] : ''
           %option{value: 'Always'} Always
           %option{value: 'Sometimes'} Sometimes
           %option{value: 'Never'} Never
@@ -113,7 +114,7 @@
       %br
       .input-group
         .input-group-addon $
-        %input#exampleInputAmount.form-control{type: "integer", placeholder: '50000', required: true, name: 'applicant[income]'}
+        %input#exampleInputAmount.form-control{type: "integer", placeholder: '50000', required: true, name: 'applicant[income]', required: true, value: p ? p['income'] : ''}
         .input-group-addon .00
 
       %label
@@ -125,32 +126,32 @@
         .input-group
           %fieldset{name: 'applicant[referral]'}
             %label.custom-control.custom-radio
-              %input#radio1.custom-control-input{type: "radio", value: 'Facebook'}
+              %input#radio1.custom-control-input{type: "radio", value: 'Facebook', value: p ? p['referral'] : ''}
               %span.custom-control-indicator
               %span.custom-control-description Facebook
 
             %label.custom-control.custom-radio
-              %input#radio1.custom-control-input{type: "radio", value: 'Instagram'}
+              %input#radio1.custom-control-input{type: "radio", value: 'Instagram', value: p ? p['referral'] : ''}
               %span.custom-control-indicator
               %span.custom-control-description Instagram
 
             %label.custom-control.custom-radio
-              %input#radio1.custom-control-input{type: "radio", value: 'Media Article'}
+              %input#radio1.custom-control-input{type: "radio", value: 'Media Article', value: p ? p['referral'] : ''}
               %span.custom-control-indicator
               %span.custom-control-description Media Article
 
             %label.custom-control.custom-radio
-              %input#radio1.custom-control-input{type: "radio", value: 'Friend in Remote Year'}
+              %input#radio1.custom-control-input{type: "radio", value: 'Friend in Remote Year', value: p ? p['referral'] : ''}
               %span.custom-control-indicator
               %span.custom-control-description Friend in Remote Year
 
             %label.custom-control.custom-radio
-              %input#radio1.custom-control-input{type: "radio", value: 'shared with me'}
+              %input#radio1.custom-control-input{type: "radio", value: 'shared with me', value: p ? p['referral'] : ''}
               %span.custom-control-indicator
               %span.custom-control-description Friend shared with me
 
             %label.custom-control.custom-radio
-              %input#radio1.custom-control-input{type: "radio", value: 'other'}
+              %input#radio1.custom-control-input{type: "radio", value: 'other', value: p ? p['referral'] : ''}
               %span.custom-control-indicator
               %span.custom-control-description Other
 

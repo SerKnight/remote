@@ -1,20 +1,60 @@
 .applicant-steps
   .col.col-md-8.offset-md-2
+    .title.text-center
+      Track your progress in the Remote Year application process
     %hr
     %progress.progress.progress-striped.progress-animated{:max => "100", :value => "1"}
     %hr
 
-    .row.tasks
-      .col-md-6
-        - @applicant.attributes.each do |atr|
+    .container
+      / Example row of columns
+      .row
+        .col-md-4
+          %i.fa.fa-phone{"aria-hidden" => "true"}
+          .title 1) Schedule Phone Screen
+          %p 
+            Choose a 
+            %a{href: 'https://calendly.com/remoteyear'} Calendly
+            session in the coming weeks to kick off the process. THis is to guage seriousness of participation and really get you excited about making such a huge life decision.
           %p
-            %strong
-              = "#{atr[0]}: "
-            %span 
-              = atr[1]
-      .col-md-6
-        %p
-          Welcome to the application process.. Track your progress, and review the checklist to get ready for remote year.
+            %a.btn.btn-primary{:href => "#", :role => "button"} Schedule Call >>
+
+        .col-md-4
+          %i.fa.fa-newspaper-o{"aria-hidden" => "true"}
+          .title 2) Confirm Travel Year
+          %p See the full itinerary for your cohorts travel destinations. View the 'Remotee' portal with a quick glimpse into all the events, adventures, and organizational tools you will get access to as a Remote Year participant & Alumni.
+          %p
+            %a.btn.btn-primary.disabled{:href => "#", :role => "button"} Finalize Itinerary >>
+        .col-md-4
+          %i.fa.fa-plane{"aria-hidden" => "true"}
+          .title 3) Final Round Commitment
+          %p Officially join the REMOTEYEAR {application.cohort.smart_name}. Place your deposit to join the trip, and receive full conifmration & instruction to join us in our first month. Official portal access given.
+          %p
+            %a.btn.btn-primary.disabled{:href => "#", :role => "button"} Meet your peers >>
+      %hr/
+
+      .col-md-12
+        .container{style: 'margin-bottom: 30px;'}
+          - @applicant.attributes.reject{|atr| atr == 'id'}.each_with_index do |atr, i|
+            - if atr[1] != nil && atr[1] != '' && atr[0] != 'created_at' && atr[0] != 'updated_at'
+              - if i < 6
+                .col-md-6
+                  %strong
+                    = "#{atr[0]}: "
+                  %span 
+                    = atr[1]
+              - else
+                .col-md-6
+                  %strong
+                    = "#{atr[0]}: "
+                  %span 
+                    = atr[1]
+
+      %br
+      %br
+      %hr/
+      
+        
     
 
 :javascript

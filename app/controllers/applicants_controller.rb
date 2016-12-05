@@ -1,7 +1,7 @@
 class ApplicantsController < ApplicationController
 
   def create_applicant
-    @applicant = Applicant.create!(secure_params)
+    @applicant = Applicant.create(secure_params)
     session[:applicant_id] = @applicant.id
 
     if @applicant.save
@@ -11,6 +11,7 @@ class ApplicantsController < ApplicationController
       end
     else
       flash[:error] = @applicant.errors.full_messages
+      session[:applicant_params] = secure_params
       redirect_back(fallback_location: '/apply')
     end
   end
@@ -24,6 +25,6 @@ class ApplicantsController < ApplicationController
   private
 
   def secure_params
-    params.require(:applicant).permit(:first_name,:last_name,:dob, :email,:gender,:zipcode,:country,:citizenship,:income,:native_language,:english_fluency,:current_job,:remote_work,:referral,:facebook,:linkedin,:instagram,:twitter,:website)
+    params.require(:applicant).permit(:first_name,:last_name,:dob, :email,:gender,:zipcode,:country,:citizenship,:travel_length,:income,:native_language,:english_fluency,:current_job,:remote_work,:referral,:facebook,:linkedin,:instagram,:twitter,:website)
   end
 end
