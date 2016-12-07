@@ -51,3 +51,7 @@ end
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median', '~> 0.1.0'

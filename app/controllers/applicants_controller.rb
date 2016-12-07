@@ -22,6 +22,39 @@ class ApplicantsController < ApplicationController
   end
 
 
+  def pipeline
+    data = Applicant.group(:stage).count
+    pipeline = ['new','screened','qualified','confirmed']
+    @data = {
+      'new' => data['new'],
+      'screened' => data['screened'],
+      'qualified' => data['qualified'],
+      'confirmed' => data['confirmed']
+    }
+
+    @jobs = Applicant.group(:current_job).count
+    
+    inc_1 = Applicant.where('income > ? AND income < ? ',0,45000)
+    inc_2 = Applicant.where('income > ? AND income < ? ',45000,66000)
+    inc_3 = Applicant.where('income > ? AND income < ? ',66000,75000)
+    inc_4 = Applicant.where('income > ? AND income < ? ',75000,90000)
+    inc_5 = Applicant.where('income > ? AND income < ? ',90000,200000)
+    @income = {
+    '$0 - $45,000' => inc_1.count,
+    '$45,000 - $65,000' => inc_2.count,
+    '$66,000 - $75,000' => inc_3.count,
+    '$75,000 - $90,000' => inc_4.count,
+    '$90,000 - $200,000' => inc_5.count
+    } 
+
+    respond_to do |format|
+      format.html {render :layout => 'analytics'}
+    end
+  end
+
+
+
+
   private
 
   def secure_params

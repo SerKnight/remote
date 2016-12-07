@@ -28,3 +28,16 @@ function datePickerInit() {
 	  });
 	}
 }
+
+
+function navigationBrickHover(){
+	$('.product-brick').hover(function(){
+		TweenLite.to($(this).find('.brick-hover'), 0.25, {autoAlpha: 0.975});
+	},function(){
+		if( $(this).hasClass('active-brick') ){
+			TweenLite.to($('.active-brick').find('.brick-hover'), 1, {autoAlpha: 0.975});
+		} else {
+			TweenLite.to($(this).find('.brick-hover'), 0.25, {autoAlpha: 0});
+		}
+	})
+}

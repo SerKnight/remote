@@ -16,6 +16,10 @@
 //= require tether
 //= require extra.slider.min.js
 //= require bootstrap-sprockets
+
+//= require Chart.bundle
+//= require chartkick
+
 //= require_tree .
 
 var ready;

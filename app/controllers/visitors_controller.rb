@@ -1,7 +1,7 @@
 class VisitorsController < ApplicationController
 
 	def index
-
+    @data = Applicant.all
 	end
 
 	def apply

@@ -17,8 +17,5 @@ module Admin
     # for more information
 
 
-    def pipeline
-      @applicants = Applicant.all.group_by(&:stage)
-    end
   end
 end

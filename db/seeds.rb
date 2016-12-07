@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -7,6 +8,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # user = CreateAdminService.new.call
 
+Applicant.destroy_all
+User.destroy_all
+
 user = User.find_or_create_by!(email: 'admin@remoteyear.com') do |user|
 	user.password = 'password'
 	user.password_confirmation = 'password'
@@ -15,15 +19,26 @@ end
 
 puts 'CREATED ADMIN USER: ' << user.email
 
+# salary_list = [44000,52000,61000,39000,77000,64000,88000,105000,95000,100000,79000,64000,58000,57500]
 
-500.times do
+500.times do |i|
 	fname = Faker::Name.first_name
 	lname = Faker::Name.last_name
 	cit = ApplicationHelper::LANGUAGES.sample
-
+	# income = salary_list.sample
+	if i< 350
+		stage = "new"
+	elsif i< 410
+		stage = "screened"
+	elsif i< 430
+		stage = "qualified"
+	else 
+		stage = "confirmed"
+	end
+		
 	puts "Creating.... #{fname} #{lname} from #{cit}"
-	Applicant.create(
-		stage: ApplicationHelper::APPLICANT_STAGES.sample,
+	Applicant.create!(
+		stage: stage,
 		first_name: fname,
 		last_name: lname,
 		dob: Faker::Date.between(50.year.ago, 18.year.ago),

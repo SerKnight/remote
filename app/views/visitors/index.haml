@@ -65,7 +65,6 @@
     How it Works
 
 %hr
-
 .relative.apply-btn-wrapper
   .extra-slider.bottom-slider
     .wrapper
@@ -78,6 +77,9 @@
     .apply-wrapper
       %a.btn.btn-default{href: '/apply'}
         Apply Now
+%hr
+/ = column_chart @data
+= area_chart @data.group(:stage).count
 
 :javascript
   homepageToggle();
